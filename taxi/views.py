@@ -61,13 +61,13 @@ class CarListView(LoginRequiredMixin, generic.ListView):
 
 class CarDetailView(LoginRequiredMixin, generic.DetailView):
     model = Car
-    template_name = 'taxi/car_detail.html'
+    template_name = "taxi/car_detail.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         car = self.object
         driver = self.request.user
-        context['has_car'] = driver.cars.filter(id=car.id).exists()
+        context["has_car"] = driver.cars.filter(id=car.id).exists()
 
         return context
 

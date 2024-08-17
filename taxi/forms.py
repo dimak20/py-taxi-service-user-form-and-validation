@@ -12,9 +12,13 @@ def validate_license_number(number) -> None:
     if len(number) != 8:
         raise ValidationError("License number must equal 8 symbols")
     if not re.match(r"^[A-Z]{3}", number):
-        raise ValidationError("License number must start with 3 uppercase letters")
+        raise ValidationError(
+            "License number must start with 3 uppercase letters"
+        )
     if not re.match(r"^[A-Z]{3}[0-9]{5}$", number):
-        raise ValidationError("License number must include 5 digits after 3 uppercase letters")
+        raise ValidationError(
+            "License number must include 5 digits after 3 uppercase letters"
+        )
 
 
 class DriverCreationForm(UserCreationForm):
