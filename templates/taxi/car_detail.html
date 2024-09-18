@@ -6,24 +6,19 @@
     <a href="{% url 'taxi:car-delete' pk=car.id %}" class="btn btn-danger link-to-page">
       Delete
     </a>
-
-    <a href="{% url 'taxi:car-update' pk=car.id %}" class="btn btn-secondary link-to-page">
-      Update
-    </a>
   </h1>
   <p>Manufacturer: ({{ car.manufacturer.name }}, {{ car.manufacturer.country }})</p>
   <h1>Drivers
-    {% if has_car %}
-      <form action="{% url 'taxi:add-or-remove-car' pk=car.id action='remove' %}" method="post" style="display:inline;">
+      <form action="" method="post" style="display:inline;">
         {% csrf_token %}
-        <input type="submit" value="Delete me from this car" class="btn btn-danger" style="float:right">
+        <input type="submit" value="{{ has_car|yesno:"Delete,Assign" }} me from this car"
+               class="btn btn-{{ has_car|yesno:"danger,success" }}" style="float:right">
       </form>
-    {% else %}
-      <form action="{% url 'taxi:add-or-remove-car' pk=car.id action='add' %}" method="post" style="display:inline;">
-        {% csrf_token %}
-        <input type="submit" value="Assign me to this car" class="btn btn-success" style="float:right">
-      </form>
-    {% endif %}
+{#      <form action="{% url 'taxi:add-or-remove-car' pk=car.id action='add' %}" method="post" style="display:inline;">#}
+{#        {% csrf_token %}#}
+{#        <input type="submit" value="Assign me to this car" class="btn btn-success" style="float:right">#}
+{#      </form>#}
+{#    {% endif %}#}
   </h1>
   <hr>
   <ul>
