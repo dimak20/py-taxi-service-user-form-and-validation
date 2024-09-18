@@ -14,11 +14,6 @@
         <input type="submit" value="{{ has_car|yesno:"Delete,Assign" }} me from this car"
                class="btn btn-{{ has_car|yesno:"danger,success" }}" style="float:right">
       </form>
-{#      <form action="{% url 'taxi:add-or-remove-car' pk=car.id action='add' %}" method="post" style="display:inline;">#}
-{#        {% csrf_token %}#}
-{#        <input type="submit" value="Assign me to this car" class="btn btn-success" style="float:right">#}
-{#      </form>#}
-{#    {% endif %}#}
   </h1>
   <hr>
   <ul>
